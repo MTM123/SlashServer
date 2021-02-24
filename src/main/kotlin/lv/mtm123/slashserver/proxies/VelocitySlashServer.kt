@@ -7,9 +7,6 @@ import com.velocitypowered.api.plugin.Plugin
 import com.velocitypowered.api.proxy.ProxyServer
 import lv.mtm123.slashserver.cmd.VelocityNavigationCommand
 import lv.mtm123.slashserver.util.Config
-import ninja.leaping.configurate.objectmapping.ObjectMapper
-import ninja.leaping.configurate.yaml.YAMLConfigurationLoader
-import org.yaml.snakeyaml.DumperOptions
 import java.io.File
 import java.util.logging.Logger
 

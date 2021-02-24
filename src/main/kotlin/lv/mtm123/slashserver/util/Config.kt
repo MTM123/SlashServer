@@ -14,7 +14,7 @@ class Config {
     val servers = listOf(ServerEntry())
 
     companion object {
-        fun loadConfig(pluginFolder : File) : Config {
+        fun loadConfig(pluginFolder: File): Config {
 
             if (!pluginFolder.exists()) {
                 pluginFolder.mkdirs()
