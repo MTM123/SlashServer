@@ -4,6 +4,7 @@ import lv.mtm123.slashserver.cmd.BungeeNavigationCommand
 import lv.mtm123.slashserver.util.Config
 import lv.mtm123.slashserver.util.ServerEntry
 import net.md_5.bungee.api.plugin.Plugin
+import org.bstats.bungeecord.Metrics
 
 class BungeeSlashServer : Plugin() {
 
@@ -12,6 +13,8 @@ class BungeeSlashServer : Plugin() {
     override fun onEnable() {
         config = Config.loadConfig(dataFolder)
         registerCommands()
+
+        Metrics(this, 12510)
     }
 
     override fun onDisable() {

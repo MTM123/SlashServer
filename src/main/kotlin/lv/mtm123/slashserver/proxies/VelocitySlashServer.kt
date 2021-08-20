@@ -7,8 +7,8 @@ import com.velocitypowered.api.plugin.Plugin
 import com.velocitypowered.api.proxy.ProxyServer
 import lv.mtm123.slashserver.cmd.VelocityNavigationCommand
 import lv.mtm123.slashserver.util.Config
+import org.bstats.velocity.Metrics
 import java.io.File
-import java.util.logging.Logger
 
 @Plugin(
     id = "slashserver",
@@ -17,7 +17,7 @@ import java.util.logging.Logger
     description = "Allows to use /<servername>",
     authors = ["MTM123"]
 )
-class VelocitySlashServer @Inject constructor(private val proxy: ProxyServer) {
+class VelocitySlashServer @Inject constructor(private val proxy: ProxyServer, private val metricsFactory: Metrics.Factory) {
 
     @Subscribe
     fun onInit(event: ProxyInitializeEvent) {
@@ -26,6 +26,8 @@ class VelocitySlashServer @Inject constructor(private val proxy: ProxyServer) {
         if (!mainDir.exists()) {
             mainDir.mkdirs()
         }
+
+        metricsFactory.make(this, 12509)
 
         Config.loadConfig(mainDir).servers.forEach { s ->
             val meta = proxy.commandManager.metaBuilder(s.server)
