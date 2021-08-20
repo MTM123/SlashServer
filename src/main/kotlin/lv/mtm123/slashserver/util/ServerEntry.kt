@@ -5,10 +5,11 @@ import ninja.leaping.configurate.objectmapping.serialize.ConfigSerializable
 
 @ConfigSerializable
 class ServerEntry {
+
     @Setting
     val server = "lobby"
 
     @Setting
-    val commands = listOf("lobby", "hub")
+    val commands = listOf("hub", "main")
 
 }
