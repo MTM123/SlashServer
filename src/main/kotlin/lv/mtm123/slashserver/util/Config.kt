@@ -1,11 +1,11 @@
 package lv.mtm123.slashserver.util
 
-import ninja.leaping.configurate.objectmapping.ObjectMapper
-import ninja.leaping.configurate.objectmapping.Setting
-import ninja.leaping.configurate.objectmapping.serialize.ConfigSerializable
-import ninja.leaping.configurate.yaml.YAMLConfigurationLoader
-import org.yaml.snakeyaml.DumperOptions
+import org.spongepowered.configurate.objectmapping.ConfigSerializable
+import org.spongepowered.configurate.objectmapping.meta.Setting
+import org.spongepowered.configurate.yaml.NodeStyle
+import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 import java.io.File
+import java.nio.file.Paths
 
 @ConfigSerializable
 class Config {
@@ -20,25 +20,20 @@ class Config {
                 pluginFolder.mkdirs()
             }
 
-            val cfgFile = File(pluginFolder, "config.yml")
+            val path = Paths.get(pluginFolder.path, "config.yml")
 
-            val instance: ObjectMapper<Config>.BoundInstance =
-                ObjectMapper.forClass(Config::class.java)
-                    .bindToNew()
-            val loader = YAMLConfigurationLoader.builder()
-                .setFile(cfgFile).setFlowStyle(DumperOptions.FlowStyle.BLOCK).build()
+            val loader = YamlConfigurationLoader.builder()
+                .path(path)
+                .nodeStyle(NodeStyle.BLOCK)
+                .build()
 
             val node = loader.load()
-            instance.populate(node)
+            val config = node.get(Config::class.java)!!
 
-            //Pretty sure I'm doing this part wrong
-            if (!cfgFile.exists()) {
-                instance.serialize(node)
-                loader.save(node)
-            }
+            node.set(Config::class.java, config)
+            loader.save(node)
 
-            //instance.populate(loader.load());
-            return instance.instance
+            return config
         }
     }
 

@@ -1,7 +1,7 @@
 package lv.mtm123.slashserver.util
 
-import ninja.leaping.configurate.objectmapping.Setting
-import ninja.leaping.configurate.objectmapping.serialize.ConfigSerializable
+import org.spongepowered.configurate.objectmapping.ConfigSerializable
+import org.spongepowered.configurate.objectmapping.meta.Setting
 
 @ConfigSerializable
 class ServerEntry {
