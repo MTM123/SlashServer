@@ -1,4 +1,4 @@
-name: SlashServerBungee
+name: SlashServer
 main: lv.mtm123.slashserver.proxies.BungeeSlashServer
 version: @version@
 author: MTM123
