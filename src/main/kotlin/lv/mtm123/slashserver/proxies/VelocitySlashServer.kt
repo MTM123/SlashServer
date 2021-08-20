@@ -13,7 +13,7 @@ import java.util.logging.Logger
 @Plugin(
     id = "slashserver",
     name = "SlashServer",
-    version = "1.0-SNAPSHOT",
+    version = "@version@",
     description = "Allows to use /<servername>",
     authors = ["MTM123"]
 )
@@ -34,9 +34,12 @@ class VelocitySlashServer {
         }
 
         Config.loadConfig(mainDir).servers.forEach { s ->
+            val meta = proxy.commandManager.metaBuilder(s.server)
+                .aliases(*s.commands.toTypedArray())
+                .build()
             proxy.commandManager.register(
-                VelocityNavigationCommand(proxy, s.server),
-                *s.commands.toTypedArray()
+                meta,
+                VelocityNavigationCommand(proxy, s.server)
             )
         }
 
