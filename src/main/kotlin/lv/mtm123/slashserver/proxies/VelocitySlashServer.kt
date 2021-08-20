@@ -17,13 +17,7 @@ import java.util.logging.Logger
     description = "Allows to use /<servername>",
     authors = ["MTM123"]
 )
-class VelocitySlashServer {
-
-    @Inject
-    private lateinit var proxy: ProxyServer
-
-    @Inject
-    private lateinit var logger: Logger
+class VelocitySlashServer @Inject constructor(private val proxy: ProxyServer) {
 
     @Subscribe
     fun onInit(event: ProxyInitializeEvent) {

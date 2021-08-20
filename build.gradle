@@ -30,7 +30,6 @@ shadowJar {
     minimize()
     relocate 'ninja.leaping.configurate', 'lv.mtm123.slashserver.ninja.leaping.configurate'
     relocate 'kotlin', 'lv.mtm123.slashserver.kotlin'
-    relocate 'com.google', 'lv.mtm123.slashserver.com.google'
     relocate 'org.yaml', 'lv.mtm123.slashserver.org.yaml'
 }
 
