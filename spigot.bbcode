@@ -1,0 +1,31 @@
+[B][SIZE=6]SlashServer[/SIZE][/B]
+
+Allows your players to use `/<servername>` command to switch subservers instead of `/server <servername>`
+
+
+[B]Requirements:[/B]
+[LIST]
+[*]BungeeCord or Velocity 3.0.0+
+[/LIST]
+
+[B]Config:[/B]
+
+[code=YAML]servers:
+-   server: lobby
+    # Aliases to /lobby command - you can use listed command instead of /lobby
+    commands:
+     - hub
+    permission: slashserver.server.lobby
+-   server: factions
+    commands:
+    - faction
+    - fac
+    permission: slashserver.server.factions
+[/code]
+
+
+[B]Links:[/B]
+[LIST]
+[*][URL='https://github.com/MTM123/SlashServer/']Source[/URL]
+[*][URL='https://discord.gg/4zPACSd87X']Discord[/URL]
+[/LIST]
