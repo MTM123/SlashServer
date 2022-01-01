@@ -24,7 +24,10 @@ class BungeeSlashServer : Plugin() {
     private fun registerCommands() {
         config.servers.forEach { s: ServerEntry ->
             val list = s.commands.filter { alias -> s.server != alias }.toCollection(ArrayList())
-            proxy.pluginManager.registerCommand(this, BungeeNavigationCommand(s.server, *list.toTypedArray()))
+            proxy.pluginManager.registerCommand(
+                this,
+                BungeeNavigationCommand(s.server, s.permission, *list.toTypedArray())
+            )
         }
     }
 

@@ -7,8 +7,8 @@ import net.md_5.bungee.api.chat.ComponentBuilder
 import net.md_5.bungee.api.connection.ProxiedPlayer
 import net.md_5.bungee.api.plugin.Command
 
-class BungeeNavigationCommand(private val target: String?, vararg aliases: String?) :
-    Command(target, null /*this is not here*/, *aliases) {
+class BungeeNavigationCommand(private val target: String?, perm: String, vararg aliases: String?) :
+    Command(target, perm, *aliases) {
 
     override fun execute(sender: CommandSender?, args: Array<out String>?) {
         if (sender !is ProxiedPlayer) {

@@ -31,7 +31,7 @@ class Config {
             val config = node.get(Config::class.java)!!
 
             node.set(Config::class.java, config)
-            loader.save(node)
+            loader.save(ConfigTransform.update(node))
 
             return config
         }

@@ -17,7 +17,10 @@ import java.io.File
     description = "Allows to use /<servername>",
     authors = ["MTM123"]
 )
-class VelocitySlashServer @Inject constructor(private val proxy: ProxyServer, private val metricsFactory: Metrics.Factory) {
+class VelocitySlashServer @Inject constructor(
+    private val proxy: ProxyServer,
+    private val metricsFactory: Metrics.Factory
+) {
 
     @Subscribe
     fun onInit(event: ProxyInitializeEvent) {
@@ -35,7 +38,7 @@ class VelocitySlashServer @Inject constructor(private val proxy: ProxyServer, pr
                 .build()
             proxy.commandManager.register(
                 meta,
-                VelocityNavigationCommand(proxy, s.server)
+                VelocityNavigationCommand(proxy, s.server, s.permission)
             )
         }
 

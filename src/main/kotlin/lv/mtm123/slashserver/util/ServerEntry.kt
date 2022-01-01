@@ -12,4 +12,7 @@ class ServerEntry {
     @Setting
     val commands = listOf("hub", "main")
 
+    @Setting
+    val permission = "slashserver.server.lobby"
+
 }
